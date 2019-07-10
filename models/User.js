@@ -1,19 +1,12 @@
-const Sequelize = require("sequelize");
-const db = require("../database/postgres");
-
-const User = db.define("users", {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
-
-module.exports = User;
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
+    name: DataTypes.STRING,
+    password: DataTypes.STRING,
+    email: DataTypes.STRING
+  }, {});
+  User.associate = function(models) {
+    // associations can be defined here
+  };
+  return User;
+};
